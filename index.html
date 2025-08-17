@@ -808,7 +808,7 @@
     <main>
         <section id="home" class="active">
             <div class="container">
-                <h1 id="welcome-message">Prince Alex Digital - Support Ticketing System (Demo)</h1>
+                <h1 id="welcome-message">Prince Alex Digital - Support Ticketing System </h1>
                 <p>Welcome to our web-based support system. Submit a ticket or view the dashboard below.</p>
                 <div class="summary-cards">
                     <div class="card">
@@ -855,7 +855,7 @@
                     <label for="attachment">Attachment (optional)</label>
                     <input type="file" id="attachment-file" name="attachment" accept="image/png, image/jpeg, image/gif">
                     <p style="font-size: 0.8em; color: var(--muted-text-color);">
-                        Note: This demo stores only the file name. Actual file content is not uploaded or saved.
+                    
                     </p>
 
                     <button type="submit">Submit Ticket</button>
@@ -982,7 +982,8 @@
 
 
             let currentTickets = [];
-            let lastCustomerName = localStorage.getItem('lastCustomerName') || 'Customer';
+            // Initialize lastCustomerName with "Prince Alex" as default
+            let lastCustomerName = localStorage.getItem('lastCustomerName') || 'Prince Alex';
 
             // --- Utility Functions ---
 
@@ -1020,9 +1021,21 @@
             /** Generates a unique ticket ID. */
             const generateTicketId = () => {
                 const existingTickets = getTickets();
-                const lastId = existingTickets.length > 0 ? existingTickets.at(-1).id : 'TKT-1000';
-                const lastNumber = parseInt(lastId.split('-')[1]);
-                return `TKT-${lastNumber + 1}`;
+                let lastNumber = 1000; // Start counter from 1000 if no tickets exist
+
+                if (existingTickets.length > 0) {
+                    // Filter tickets that start with "PA-" to get the highest number
+                    const paTickets = existingTickets.filter(t => t.id.startsWith('PA-'));
+                    if (paTickets.length > 0) {
+                        const latestPaId = paTickets.sort((a, b) => {
+                            const numA = parseInt(a.id.split('-')[1]);
+                            const numB = parseInt(b.id.split('-')[1]);
+                            return numB - numA; // Sort descending
+                        })[0].id;
+                        lastNumber = parseInt(latestPaId.split('-')[1]);
+                    }
+                }
+                return `PA-${lastNumber + 1}`;
             };
 
             // --- UI State Management ---
@@ -1070,7 +1083,7 @@
                 document.getElementById('in-progress-tickets').textContent = inProgress;
                 document.getElementById('resolved-tickets').textContent = resolved;
 
-                document.getElementById('welcome-message').textContent = `Welcome, ${lastCustomerName} - Support Ticketing System (Demo)`;
+                document.getElementById('welcome-message').textContent = `Welcome, ${lastCustomerName} - Support Ticketing System`;
             };
 
             // --- Submit Ticket ---
@@ -1283,11 +1296,9 @@
             // Initial load
             showSection('home');
             // Set default customer name if not already saved
-            if (!localStorage.getItem('lastCustomerName')) {
-                document.getElementById('customer-name').value = 'John Doe';
-            } else {
-                document.getElementById('customer-name').value = lastCustomerName;
-            }
+            // This ensures "Prince Alex" is the default when the page first loads
+            // and persists across sessions if not changed by the user.
+            document.getElementById('customer-name').value = lastCustomerName;
         });
     </script>
 </body>
