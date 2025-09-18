@@ -4,87 +4,163 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prince Alex Digital - Customer Support</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Basic Reset & Typography */
+        /* Modern CSS Reset & Typography */
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
             background-color: var(--bg-color);
             color: var(--text-color);
-            transition: background-color 0.4s ease, color 0.4s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* CSS Variables for Light/Dark Mode */
+        /* Modern Design System Variables */
         :root {
-            --primary-color: #0077CC; /* Royal Blue / Digital Blue */
-            --secondary-color: #F4F7FA; /* Light Grey for page background */
-            --accent-color: #FF8800; /* Bright Orange for attention/action */
+            /* Primary Brand Colors */
+            --primary-50: #eff6ff;
+            --primary-100: #dbeafe;
+            --primary-200: #bfdbfe;
+            --primary-300: #93c5fd;
+            --primary-400: #60a5fa;
+            --primary-500: #3b82f6;
+            --primary-600: #2563eb;
+            --primary-700: #1d4ed8;
+            --primary-800: #1e40af;
+            --primary-900: #1e3a8a;
             
-            --bg-color: var(--secondary-color); 
-            --card-bg: #FFFFFF; /* White for card backgrounds */
-            --border-color: #E0E4E8; /* Slightly darker grey for borders */
-            --text-color: #212529; /* Dark text for readability */
-            --heading-color: #333333; /* Darker text for headings */
-            --muted-text-color: #6c757d; /* Lighter text for descriptions/notes */
+            /* Semantic Colors */
+            --success-500: #10b981;
+            --success-600: #059669;
+            --warning-500: #f59e0b;
+            --warning-600: #d97706;
+            --error-500: #ef4444;
+            --error-600: #dc2626;
             
-            --customer-bubble-bg: #E0F2F7; /* Light blue */
-            --admin-bubble-bg: #F0F0F0;   /* Light grey */
+            /* Neutral Colors */
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            
+            /* Light Theme */
+            --primary-color: var(--primary-600);
+            --secondary-color: var(--gray-50);
+            --accent-color: var(--warning-500);
+            
+            --bg-color: var(--gray-50);
+            --card-bg: #ffffff;
+            --border-color: var(--gray-200);
+            --text-color: var(--gray-900);
+            --heading-color: var(--gray-900);
+            --muted-text-color: var(--gray-600);
+            
+            --customer-bubble-bg: var(--primary-100);
+            --admin-bubble-bg: var(--gray-100);
 
-            --shadow-light: 0 4px 12px rgba(0,0,0,0.08); /* Soft shadow for cards */
-            --shadow-button: 0 2px 6px rgba(0,0,0,0.1); /* Button specific shadow */
+            /* Modern Shadows */
+            --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            /* Border Radius */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            
+            /* Spacing */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
         }
 
+        /* Dark Theme */
         body.dark-mode {
-            --primary-color: #5AA9E6; /* Lighter blue for dark mode contrast */
-            --secondary-color: #2C3E50; /* Dark grey for page background in dark mode */
-            --accent-color: #FFAA44; /* Slightly brighter orange for dark mode */
-
-            --bg-color: var(--secondary-color); 
-            --card-bg: #34495E; /* Darker grey for card backgrounds */
-            --border-color: #4A6078; /* Muted border in dark mode */
-            --text-color: #ECF0F1; /* Light text for readability */
-            --heading-color: #F8F9FA; /* Lighter text for headings */
-            --muted-text-color: #BDC3C7; /* Muted text in dark mode */
+            --primary-color: var(--primary-400);
+            --secondary-color: var(--gray-900);
+            --accent-color: var(--warning-400);
             
-            --customer-bubble-bg: #4A6078; /* Darker blue */
-            --admin-bubble-bg: #5D728A;   /* Darker grey */
-
-            --shadow-light: 0 4px 12px rgba(0,0,0,0.3); 
-            --shadow-button: 0 2px 6px rgba(0,0,0,0.2);
+            --bg-color: var(--gray-900);
+            --card-bg: var(--gray-800);
+            --border-color: var(--gray-700);
+            --text-color: var(--gray-100);
+            --heading-color: var(--gray-50);
+            --muted-text-color: var(--gray-400);
+            
+            --customer-bubble-bg: var(--primary-900);
+            --admin-bubble-bg: var(--gray-700);
         }
 
-        /* Header & Navigation */
+        /* Modern Header & Navigation */
         header {
             background-color: var(--card-bg);
-            box-shadow: var(--shadow-light);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 1000;
+            transition: all 0.3s ease;
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-            max-width: 1200px;
+            padding: var(--space-4) var(--space-6);
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .logo {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary-color);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: translateY(-1px);
+        }
+
+        .logo i {
+            font-size: 1.8rem;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            gap: var(--space-8);
             margin: 0;
             padding: 0;
         }
@@ -92,69 +168,142 @@
         .nav-links a {
             text-decoration: none;
             color: var(--text-color);
-            font-weight: 400;
-            padding-bottom: 0.25rem;
-            transition: color 0.3s ease, border-bottom 0.3s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-md);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-links a:hover::before {
+            left: 100%;
         }
 
         .nav-links a.active {
             color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-            font-weight: 700;
+            background-color: var(--primary-50);
+            font-weight: 600;
         }
 
         .nav-links a:hover {
             color: var(--primary-color);
-            transform: translateY(-2px);
+            background-color: var(--primary-50);
+            transform: translateY(-1px);
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
         }
 
         #theme-toggle {
-            background: none;
-            border: none;
+            background: var(--gray-100);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
             cursor: pointer;
-            font-size: 1.7rem;
-            padding: 0;
+            font-size: 1.1rem;
+            padding: var(--space-2);
             color: var(--text-color);
-            transition: transform 0.2s ease;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
         #theme-toggle:hover {
-            transform: scale(1.1);
+            background: var(--primary-100);
+            color: var(--primary-color);
+            transform: scale(1.05);
         }
 
-        /* Hamburger menu for mobile */
+        /* Modern Hamburger Menu */
         .hamburger {
-            display: none; /* Hidden by default */
+            display: none;
             cursor: pointer;
-            font-size: 2.2rem;
+            background: var(--gray-100);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2);
             color: var(--text-color);
-            padding: 0.5rem;
-            line-height: 1; /* Adjust to center vertically */
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Tagline below header */
+        .hamburger:hover {
+            background: var(--primary-100);
+            color: var(--primary-color);
+        }
+
+        /* Modern Tagline */
         .tagline {
             text-align: center;
-            padding: 0.75rem 0;
-            background-color: var(--bg-color);
+            padding: var(--space-3) 0;
+            background: linear-gradient(135deg, var(--primary-50), var(--gray-50));
             color: var(--muted-text-color);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            font-weight: 500;
             border-top: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Main Content & Sections */
+        .tagline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Modern Main Content & Sections */
         main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            max-width: 1400px;
+            margin: var(--space-8) auto;
+            padding: 0 var(--space-6);
+            min-height: calc(100vh - 200px);
         }
 
         section {
             display: none;
-            animation: fadeIn 0.5s ease-out forwards;
+            animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
         }
 
         section.active {
@@ -162,263 +311,631 @@
         }
 
         .container {
-            padding: 2.5rem;
+            padding: var(--space-10);
             background-color: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: var(--shadow-light);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
         }
 
         h1, h2 {
             color: var(--heading-color);
-            border-bottom: 1px solid var(--border-color); /* Thinner border */
-            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: var(--space-4);
             margin-top: 0;
-            margin-bottom: 1.5rem;
+            margin-bottom: var(--space-8);
             font-weight: 700;
+            font-size: 2rem;
+            position: relative;
         }
 
-        /* Dashboard Cards */
+        h2 {
+            font-size: 1.75rem;
+        }
+
+        h1::after, h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        /* Modern Dashboard Cards */
         .summary-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-8);
         }
 
         .card {
-            padding: 1.8rem;
-            border-radius: 10px;
-            background-color: var(--bg-color);
+            padding: var(--space-8);
+            border-radius: var(--radius-xl);
+            background: linear-gradient(135deg, var(--card-bg), var(--gray-50));
             text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-200);
         }
 
-        .card h3 {
-            margin: 0 0 0.7rem;
+        .card-icon {
+            font-size: 2.5rem;
             color: var(--primary-color);
-            font-size: 1.2rem;
-        }
-
-        .card p {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin: 0;
-            color: var(--heading-color);
-        }
-
-        /* Forms */
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-
-        label {
-            font-weight: 700;
-            color: var(--heading-color);
-            margin-bottom: -0.5rem; /* Pull label closer to input */
+            margin-bottom: var(--space-4);
             display: block;
         }
 
+        .card h3 {
+            margin: 0 0 var(--space-4);
+            color: var(--heading-color);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card p {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 0;
+            color: var(--heading-color);
+            font-family: 'JetBrains Mono', monospace;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Modern Forms */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        label {
+            font-weight: 600;
+            color: var(--heading-color);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        label i {
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+
         input[type="text"], input[type="file"], input[type="email"], select, textarea {
-            padding: 0.85rem;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background-color: var(--card-bg); /* Use card background for inputs */
+            padding: var(--space-4);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            background-color: var(--card-bg);
             color: var(--text-color);
             font-size: 1rem;
+            font-family: inherit;
             outline: none;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
+
         input[type="text"]:focus, input[type="file"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(0,119,204,0.2); /* Focus ring effect */
+            box-shadow: 0 0 0 4px var(--primary-100);
+            transform: translateY(-1px);
         }
+
         input::placeholder, textarea::placeholder {
             color: var(--muted-text-color);
-            opacity: 0.7;
+            opacity: 0.8;
+        }
+
+        select {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 12px center;
+            background-repeat: no-repeat;
+            background-size: 16px;
+            padding-right: 40px;
         }
 
 
+        /* Modern Buttons */
         button {
-            padding: 0.9rem 1.8rem;
-            background: linear-gradient(145deg, var(--primary-color), #0056b3); /* Darker blue for gradient end */
+            padding: var(--space-4) var(--space-8);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-700));
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: var(--radius-lg);
             cursor: pointer;
-            font-size: 1.1rem;
-            font-weight: 700;
-            box-shadow: var(--shadow-button);
-            transition: all 0.2s ease;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: inherit;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             outline: none;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            min-height: 48px;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        button:hover::before {
+            left: 100%;
         }
 
         button:hover {
-            background: linear-gradient(145deg, #0056b3, var(--primary-color)); /* Reverse gradient on hover */
+            background: linear-gradient(135deg, var(--primary-700), var(--primary-color));
             transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-        button:active {
-            transform: translateY(0);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-lg);
         }
 
-        /* Ticket Lists & Details */
+        button:active {
+            transform: translateY(0);
+            box-shadow: var(--shadow-sm);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        button i {
+            font-size: 1.1rem;
+        }
+
+        /* Button Variants */
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--gray-600), var(--gray-700));
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, var(--gray-700), var(--gray-600));
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success-500), var(--success-600));
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(135deg, var(--success-600), var(--success-500));
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, var(--warning-500), var(--warning-600));
+        }
+
+        .btn-warning:hover {
+            background: linear-gradient(135deg, var(--warning-600), var(--warning-500));
+        }
+
+        /* Modern Ticket Lists & Search */
         .ticket-list {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: var(--space-4);
+            margin-top: var(--space-6);
+        }
+
+        .search-container {
+            position: relative;
+            margin-bottom: var(--space-6);
         }
 
         .ticket-search-bar {
-            margin-bottom: 1.5rem;
-            padding: 0.85rem;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
+            padding: var(--space-4) var(--space-4) var(--space-4) 48px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
             background-color: var(--card-bg);
             color: var(--text-color);
             width: 100%;
             box-sizing: border-box; 
             outline: none;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
+            font-family: inherit;
         }
+
         .ticket-search-bar:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(0,119,204,0.2);
+            box-shadow: 0 0 0 4px var(--primary-100);
+            transform: translateY(-1px);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: var(--space-4);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted-text-color);
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+
+        .ticket-search-bar:focus + .search-icon {
+            color: var(--primary-color);
         }
 
         .ticket-item {
-            padding: 1.2rem 1.5rem;
-            background-color: var(--bg-color); /* Use secondary background for list items */
-            border-radius: 10px;
+            padding: var(--space-6);
+            background: linear-gradient(135deg, var(--card-bg), var(--gray-50));
+            border-radius: var(--radius-xl);
             border: 1px solid var(--border-color);
             cursor: pointer;
-            transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            gap: var(--space-3);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ticket-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .ticket-item:hover::before {
+            transform: scaleX(1);
         }
 
         .ticket-item:hover {
-            background-color: #EBF2F7; /* Lighter shade of secondary color */
-            transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            background: linear-gradient(135deg, var(--primary-50), var(--card-bg));
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-200);
         }
-        body.dark-mode .ticket-item:hover {
-            background-color: #3B536B;
-        }
-
 
         .ticket-item h4 {
             margin: 0;
             color: var(--heading-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .ticket-item h4 i {
+            color: var(--primary-color);
             font-size: 1.1rem;
         }
 
         .ticket-item p {
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--muted-text-color);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .ticket-item p i {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            width: 16px;
+        }
+
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-3);
+        }
+
+        .ticket-header h4 {
+            margin: 0;
+            flex: 1;
+        }
+
+        .ticket-actions {
+            display: flex;
+            gap: var(--space-2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .ticket-item:hover .ticket-actions {
+            opacity: 1;
+        }
+
+        .action-btn {
+            background: var(--primary-color);
+            border: none;
+            border-radius: var(--radius-md);
+            color: white;
+            padding: var(--space-2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+        }
+
+        .action-btn:hover {
+            background: var(--primary-700);
+            transform: scale(1.1);
+        }
+
+        .action-btn i {
+            font-size: 0.9rem;
+        }
+
+        .ticket-details {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .ticket-item:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
         }
 
         .status-badge {
-            padding: 0.3rem 0.7rem;
-            border-radius: 16px;
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-xl);
             font-size: 0.8rem;
             color: white;
-            font-weight: 700;
-            display: inline-block;
-            margin-top: 0.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-1);
+            box-shadow: var(--shadow-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .status-badge.pending { background-color: var(--accent-color); } 
-        .status-badge.in-progress { background-color: #17a2b8; } /* Keep existing blue-green for in-progress */
-        .status-badge.resolved { background-color: #28a745; } /* Keep existing green for resolved */
+        .status-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .status-badge:hover::before {
+            left: 100%;
+        }
+
+        .status-badge.pending { 
+            background: linear-gradient(135deg, var(--warning-500), var(--warning-600));
+        } 
+        .status-badge.in-progress { 
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+        }
+        .status-badge.resolved { 
+            background: linear-gradient(135deg, var(--success-500), var(--success-600));
+        }
 
         .ticket-detail-card {
-            padding: 2.5rem;
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: var(--shadow-light);
+            padding: var(--space-10);
+            background: linear-gradient(135deg, var(--card-bg), var(--gray-50));
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ticket-detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
         }
 
         .ticket-detail-card h3 {
             margin-top: 0;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.75rem;
-            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: var(--space-4);
+            margin-bottom: var(--space-6);
+            font-size: 1.5rem;
+            position: relative;
+        }
+
+        .ticket-detail-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        .ticket-detail-card .ticket-info {
+            background: var(--gray-50);
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            margin-bottom: var(--space-6);
         }
 
         .ticket-detail-card .ticket-info p {
-            margin-bottom: 0.6rem;
+            margin-bottom: var(--space-3);
             font-size: 1rem;
             color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
         }
+
+        .ticket-detail-card .ticket-info p i {
+            color: var(--primary-color);
+            width: 20px;
+        }
+
         .ticket-detail-card .ticket-info strong {
             color: var(--heading-color);
+            font-weight: 600;
         }
 
         .ticket-detail-card .updates {
-            border-top: 1px solid var(--border-color);
-            padding-top: 1.5rem;
-            margin-top: 2rem;
+            border-top: 2px solid var(--border-color);
+            padding-top: var(--space-6);
+            margin-top: var(--space-8);
         }
 
         .updates-list {
-            max-height: 350px; /* Slightly taller for more messages */
+            max-height: 400px;
             overflow-y: auto;
-            padding-right: 15px; /* More space for scrollbar */
+            padding-right: var(--space-4);
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: var(--space-4);
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) var(--gray-200);
+        }
+
+        .updates-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .updates-list::-webkit-scrollbar-track {
+            background: var(--gray-200);
+            border-radius: var(--radius-sm);
+        }
+
+        .updates-list::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: var(--radius-sm);
         }
 
         .update-item {
-            padding: 0.9rem 1.2rem;
-            border-radius: 18px; /* More rounded bubbles */
-            margin-bottom: 0.2rem; /* Reduce gap between bubbles */
-            max-width: 85%; /* Slightly wider bubbles */
+            padding: var(--space-4) var(--space-5);
+            border-radius: var(--radius-xl);
+            max-width: 80%;
             clear: both; 
             word-wrap: break-word; 
-            box-shadow: 0 1px 4px rgba(0,0,0,0.05); /* Subtle bubble shadow */
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .update-item:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
         }
 
         .update-item.customer-reply {
-            background-color: var(--primary-color); /* Primary color for customer */
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-600));
             color: white;
             float: right;
-            border-bottom-right-radius: 6px;
+            border-bottom-right-radius: var(--radius-sm);
             text-align: right;
         }
 
         .update-item.admin-reply {
-            background-color: var(--admin-bubble-bg);
+            background: linear-gradient(135deg, var(--gray-100), var(--gray-200));
             color: var(--text-color);
             float: left;
-            border-bottom-left-radius: 6px;
+            border-bottom-left-radius: var(--radius-sm);
             text-align: left;
         }
+
         .update-item small {
             font-size: 0.75rem;
-            color: rgba(255,255,255,0.7); /* Lighter text for date in primary bubble */
+            color: rgba(255,255,255,0.8);
             display: block;
-            margin-top: 0.4rem;
+            margin-top: var(--space-2);
+            font-weight: 500;
         }
+
         .update-item.admin-reply small {
             color: var(--muted-text-color);
         }
+
         .update-item p {
             font-size: 0.95rem;
             margin: 0;
+            line-height: 1.5;
+        }
+
+        .update-item strong {
+            display: block;
+            margin-bottom: var(--space-1);
+            font-size: 0.85rem;
+            opacity: 0.9;
         }
         
         /* Clearfix for bubbles */
@@ -434,122 +951,202 @@
         }
 
 
-        /* FAQs */
+        /* Modern FAQs */
         .faq-list {
-            margin-top: 1.5rem;
+            margin-top: var(--space-6);
         }
+
         .faq-item {
-            background-color: var(--bg-color);
+            background: linear-gradient(135deg, var(--card-bg), var(--gray-50));
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            margin-bottom: 0.8rem;
-            overflow: hidden; /* Hide overflowing content during collapse */
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            transition: box-shadow 0.2s ease;
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--space-4);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item:hover::before {
+            transform: scaleX(1);
+        }
+
         .faq-item:hover {
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
         }
 
         .faq-question {
-            padding: 1.2rem 1.5rem;
-            font-weight: 700;
+            padding: var(--space-6);
+            font-weight: 600;
             color: var(--heading-color);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 1.1rem;
-            background-color: var(--card-bg); /* Question part uses card background */
-            border-bottom: 1px solid transparent; /* for active state */
+            background-color: var(--card-bg);
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .faq-question:hover {
+            background-color: var(--primary-50);
+            color: var(--primary-color);
         }
 
         .faq-answer {
-            padding: 0 1.5rem 1.2rem;
+            padding: 0 var(--space-6) var(--space-6);
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease-out, padding 0.4s ease-out, border-top 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border-top: 1px solid transparent; 
             color: var(--text-color);
+            background-color: var(--gray-50);
         }
 
         .faq-item.active .faq-answer {
-            max-height: 200px; /* Adjust as needed */
-            padding-top: 1.2rem;
+            max-height: 300px;
+            padding-top: var(--space-6);
             border-top: 1px solid var(--border-color);
         }
 
         .faq-question::after {
             content: '▼';
-            transition: transform 0.3s ease;
-            font-size: 0.8em;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
             color: var(--primary-color);
+            transform-origin: center;
         }
 
         .faq-item.active .faq-question::after {
             transform: rotate(180deg);
         }
 
-        /* Contact Us */
-        .contact-info p {
-            margin-bottom: 0.8rem;
-            font-size: 1rem;
+        .faq-item.active .faq-question {
+            background-color: var(--primary-50);
+            color: var(--primary-color);
         }
+
+        /* Modern Contact Us */
+        .contact-info {
+            background: var(--gray-50);
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            margin-bottom: var(--space-8);
+        }
+
+        .contact-info p {
+            margin-bottom: var(--space-4);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .contact-info p i {
+            color: var(--primary-color);
+            width: 20px;
+        }
+
         .contact-info strong {
             color: var(--heading-color);
+            font-weight: 600;
         }
+
         .contact-info a {
             color: var(--primary-color);
             text-decoration: none;
-            transition: text-decoration 0.2s ease;
-        }
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-        #contact-form-message {
-            margin-top: 1.2rem;
-            font-weight: 700;
-            color: var(--primary-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-sm);
         }
 
-        /* Footer */
+        .contact-info a:hover {
+            background-color: var(--primary-50);
+            transform: translateY(-1px);
+        }
+
+        #contact-form-message {
+            margin-top: var(--space-6);
+            font-weight: 600;
+            color: var(--primary-color);
+            padding: var(--space-4);
+            background: var(--primary-50);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--primary-200);
+        }
+
+        /* Modern Footer */
         footer {
             text-align: center;
-            padding: 1.8rem;
-            margin-top: 3rem;
-            background-color: var(--card-bg);
-            box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
-            color: var(--muted-text-color); /* Using muted text color for footer */
+            padding: var(--space-8);
+            margin-top: var(--space-16);
+            background: linear-gradient(135deg, var(--card-bg), var(--gray-50));
+            box-shadow: var(--shadow-lg);
+            color: var(--muted-text-color);
             font-size: 0.9rem;
             border-top: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
         }
 
         footer a {
-            color: var(--primary-color); /* Use primary color for footer links */
+            color: var(--primary-color);
             text-decoration: none;
-            margin: 0 0.6rem;
-            transition: text-decoration 0.2s ease;
+            margin: 0 var(--space-3);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-sm);
         }
 
         footer a:hover {
-            text-decoration: underline;
+            background-color: var(--primary-50);
+            transform: translateY(-1px);
         }
 
-        /* Loading Spinner */
+        /* Modern Loading Spinner */
         .spinner-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay */
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 2000;
-            transition: opacity 0.3s ease-in-out;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0;
-            pointer-events: none; /* Allows clicks to pass through when hidden */
+            pointer-events: none;
         }
 
         .spinner-overlay.visible {
@@ -558,13 +1155,36 @@
         }
 
         .spinner {
-            border: 8px solid rgba(255, 255, 255, 0.2); /* Lighter border for spinner background */
-            border-top: 8px solid var(--primary-color); /* Spinner color */
-            border-radius: 50%;
             width: 60px;
             height: 60px;
+            position: relative;
+        }
+
+        .spinner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
             animation: spin 1s linear infinite;
-            box-shadow: 0 0 15px rgba(0,119,204,0.5); /* Glowing effect */
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .spinner::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: calc(100% - 16px);
+            height: calc(100% - 16px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--accent-color);
+            animation: spin 1.5s linear infinite reverse;
         }
 
         @keyframes spin {
@@ -572,21 +1192,22 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Success Message Overlay */
+        /* Modern Success Message Overlay */
         .success-message-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent overlay */
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 2001; /* Above spinner */
+            z-index: 2001;
             opacity: 0;
-            visibility: hidden; /* Hidden by default */
-            transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .success-message-overlay.visible {
@@ -595,41 +1216,55 @@
         }
 
         .success-message-content {
-            background-color: var(--card-bg);
-            padding: 2.5rem 3rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow-light);
+            background: linear-gradient(135deg, var(--card-bg), var(--gray-50));
+            padding: var(--space-10) var(--space-12);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border-color);
             text-align: center;
-            transform: translateY(-20px); /* Start slightly above center */
+            transform: translateY(-30px) scale(0.9);
             opacity: 0;
-            transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .success-message-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--success-500), var(--success-600));
         }
 
         .success-message-overlay.visible .success-message-content {
-            transform: translateY(0); /* Move to center */
+            transform: translateY(0) scale(1);
             opacity: 1;
         }
 
         .success-message-content svg, .success-message-content .checkmark {
-            width: 60px;
-            height: 60px;
-            color: #28a745; /* Green for success */
-            margin-bottom: 1.5rem;
-            animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bouncy animation */
+            width: 80px;
+            height: 80px;
+            color: var(--success-500);
+            margin-bottom: var(--space-6);
+            animation: successPop 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
-        /* For unicode checkmark if SVG not used */
+
         .success-message-content .checkmark {
             font-size: 4rem;
             line-height: 1;
             display: block;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto var(--space-6);
         }
-
 
         .success-message-content h3 {
             color: var(--heading-color);
-            font-size: 1.8rem;
-            margin-bottom: 0.8rem;
+            font-size: 2rem;
+            margin-bottom: var(--space-4);
             font-weight: 700;
         }
 
@@ -637,34 +1272,165 @@
             color: var(--text-color);
             font-size: 1.1rem;
             margin-bottom: 0;
+            line-height: 1.6;
         }
 
-        @keyframes popIn {
-            0% { transform: scale(0); opacity: 0; }
-            80% { transform: scale(1.1); opacity: 1; }
+        @keyframes successPop {
+            0% { 
+                transform: scale(0) rotate(-10deg); 
+                opacity: 0; 
+            }
+            50% { 
+                transform: scale(1.1) rotate(5deg); 
+                opacity: 1; 
+            }
+            100% { 
+                transform: scale(1) rotate(0deg); 
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
 
+        @keyframes cardGlow {
+            0% { box-shadow: var(--shadow-md); }
+            50% { box-shadow: 0 0 20px var(--primary-200); }
+            100% { box-shadow: var(--shadow-md); }
+        }
 
-        /* Responsive adjustments */
+        @keyframes skeleton {
+            0% { background-position: -200px 0; }
+            100% { background-position: calc(200px + 100%) 0; }
+        }
+
+        /* Skeleton Loading States */
+        .skeleton {
+            background: linear-gradient(90deg, var(--gray-200) 25%, var(--gray-100) 50%, var(--gray-200) 75%);
+            background-size: 200px 100%;
+            animation: skeleton 1.5s infinite;
+            border-radius: var(--radius-lg);
+        }
+
+        .skeleton-card {
+            padding: var(--space-8);
+            border-radius: var(--radius-xl);
+            background: linear-gradient(135deg, var(--card-bg), var(--gray-50));
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .skeleton-card .skeleton-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 0 auto var(--space-4);
+        }
+
+        .skeleton-card .skeleton-title {
+            height: 20px;
+            width: 60%;
+            margin: 0 auto var(--space-4);
+        }
+
+        .skeleton-card .skeleton-number {
+            height: 40px;
+            width: 40%;
+            margin: 0 auto;
+        }
+
+        .skeleton-ticket {
+            padding: var(--space-6);
+            border-radius: var(--radius-xl);
+            background: linear-gradient(135deg, var(--card-bg), var(--gray-50));
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: var(--space-4);
+        }
+
+        .skeleton-ticket .skeleton-line {
+            height: 16px;
+            margin-bottom: var(--space-2);
+        }
+
+        .skeleton-ticket .skeleton-line.short {
+            width: 40%;
+        }
+
+        .skeleton-ticket .skeleton-line.medium {
+            width: 70%;
+        }
+
+        .skeleton-ticket .skeleton-line.long {
+            width: 90%;
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Enhanced Card Interactions */
+        .card, .ticket-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:active, .ticket-item:active {
+            transform: scale(0.98);
+        }
+
+
+        /* Modern Responsive Design */
+        @media (max-width: 1024px) {
+            main {
+                padding: 0 var(--space-4);
+            }
+            
+            .container {
+                padding: var(--space-8);
+            }
+            
+            .summary-cards {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: var(--space-4);
+            }
+        }
+
         @media (max-width: 768px) {
             nav {
-                padding: 0.8rem 1rem; /* Adjust padding for smaller screens */
+                padding: var(--space-3) var(--space-4);
+                flex-wrap: wrap;
             }
+            
             .hamburger {
-                display: block; 
+                display: flex;
                 order: 2; 
-                margin-left: 1rem; /* Space between toggle and hamburger */
             }
+            
             #theme-toggle {
                 order: 1; 
-                margin-right: auto; /* Push logo to left, hamburger to right */
             }
+            
             .logo {
-                flex-grow: 1; /* Allow logo to take available space */
-                text-align: center; /* Center logo when hamburger is present */
+                flex-grow: 1;
+                text-align: center;
                 margin: 0;
-                font-size: 1.4rem;
+                font-size: 1.3rem;
             }
 
             .nav-links {
@@ -672,115 +1438,162 @@
                 flex-direction: column;
                 width: 100%;
                 text-align: center;
-                padding: 0.5rem 0;
-                background-color: var(--card-bg); 
-                box-shadow: var(--shadow-light);
+                padding: var(--space-4) 0;
+                background: linear-gradient(135deg, var(--card-bg), var(--gray-50));
+                box-shadow: var(--shadow-lg);
                 position: absolute;
                 top: 100%; 
                 left: 0;
                 z-index: 999;
-                border-radius: 0 0 12px 12px; 
-                gap: 0; /* Remove gap when stacked */
+                border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+                gap: 0;
                 border-top: 1px solid var(--border-color);
             }
+            
             .nav-links.active {
                 display: flex; 
             }
+            
             .nav-links li {
                 width: 100%;
-                border-bottom: 1px solid var(--border-color); /* Separator for menu items */
+                border-bottom: 1px solid var(--border-color);
             }
+            
             .nav-links li:last-child {
                 border-bottom: none;
             }
+            
             .nav-links a {
-                padding: 1rem 0;
+                padding: var(--space-4) 0;
                 display: block;
-                border-bottom: none; 
-            }
-            .nav-links a.active {
-                border-bottom: none; 
+                border-radius: 0;
+                margin: 0 var(--space-4);
             }
 
             main {
-                margin: 1.5rem auto;
-                padding: 0 0.8rem;
+                margin: var(--space-6) auto;
+                padding: 0 var(--space-3);
             }
+            
             .container {
-                padding: 1.5rem;
+                padding: var(--space-6);
             }
+            
             h1, h2 {
                 font-size: 1.6rem;
-                padding-bottom: 0.8rem;
-                margin-bottom: 1rem;
+                padding-bottom: var(--space-3);
+                margin-bottom: var(--space-6);
             }
+            
             .summary-cards {
                 grid-template-columns: 1fr;
+                gap: var(--space-4);
             }
+            
             .card {
-                padding: 1.2rem;
+                padding: var(--space-6);
             }
+            
             .card p {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
+            
             form {
-                gap: 0.8rem;
+                gap: var(--space-4);
             }
-            label, input, select, textarea, button {
-                font-size: 0.95rem;
-                padding: 0.7rem;
-            }
-            button {
-                padding: 0.8rem 1.5rem;
-            }
-            .ticket-item {
-                padding: 1rem;
-            }
-            .ticket-item h4 {
+            
+            input, select, textarea, button {
                 font-size: 1rem;
+                padding: var(--space-3);
             }
+            
+            button {
+                padding: var(--space-3) var(--space-6);
+            }
+            
+            .ticket-item {
+                padding: var(--space-4);
+            }
+            
+            .ticket-item h4 {
+                font-size: 1.1rem;
+            }
+            
             .ticket-item p {
-                font-size: 0.85rem;
-            }
-            .ticket-detail-card {
-                padding: 1.5rem;
-            }
-            .updates-list {
-                padding-right: 5px;
-            }
-            .update-item {
-                max-width: 100%; /* Allow bubbles to take full width */
-                padding: 0.7rem 1rem;
                 font-size: 0.9rem;
             }
+            
+            .ticket-detail-card {
+                padding: var(--space-6);
+            }
+            
+            .update-item {
+                max-width: 95%;
+                padding: var(--space-3) var(--space-4);
+                font-size: 0.9rem;
+            }
+            
             .faq-question {
-                padding: 1rem 1.2rem;
+                padding: var(--space-4) var(--space-5);
                 font-size: 1rem;
             }
+            
             .faq-answer {
-                padding: 0 1.2rem 1rem;
+                padding: 0 var(--space-5) var(--space-4);
             }
+            
             footer {
-                padding: 1.2rem;
-                margin-top: 2rem;
+                padding: var(--space-6);
+                margin-top: var(--space-12);
             }
+            
             .tagline {
                 font-size: 0.85rem;
             }
 
             .success-message-content {
-                padding: 1.5rem 2rem;
+                padding: var(--space-8) var(--space-6);
+                margin: var(--space-4);
             }
+            
             .success-message-content svg, .success-message-content .checkmark {
-                width: 50px;
-                height: 50px;
-                margin-bottom: 1rem;
+                width: 60px;
+                height: 60px;
+                margin-bottom: var(--space-4);
             }
+            
             .success-message-content h3 {
+                font-size: 1.6rem;
+            }
+            
+            .success-message-content p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.1rem;
+            }
+            
+            .container {
+                padding: var(--space-4);
+            }
+            
+            h1, h2 {
                 font-size: 1.4rem;
             }
-            .success-message-content p {
-                font-size: 0.95rem;
+            
+            .card p {
+                font-size: 2rem;
+            }
+            
+            .ticket-detail-card {
+                padding: var(--space-4);
+            }
+            
+            .success-message-content {
+                padding: var(--space-6) var(--space-4);
             }
         }
     </style>
@@ -789,19 +1602,39 @@
 
     <header>
         <nav>
-            <div class="logo">Prince Alex Digital – Customer Support</div>
-            <button id="theme-toggle">☀️</button>
-            <div class="hamburger" id="hamburger-menu">☰</div>
+            <a href="#" class="logo" data-section="home">
+                <i class="fas fa-headset"></i>
+                Prince Alex Digital
+            </a>
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <div class="hamburger" id="hamburger-menu" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
             <ul class="nav-links" id="nav-links">
-                <li><a href="#" data-section="home" class="active">Home</a></li>
-                <li><a href="#" data-section="submit-ticket">Submit Ticket</a></li>
-                <li><a href="#" data-section="my-tickets">My Tickets</a></li>
-                <li><a href="#" data-section="faqs">FAQs / Knowledge Base</a></li>
-                <li><a href="#" data-section="contact-us">Contact Us</a></li>
+                <li><a href="#" data-section="home" class="active">
+                    <i class="fas fa-home"></i> Home
+                </a></li>
+                <li><a href="#" data-section="submit-ticket">
+                    <i class="fas fa-plus-circle"></i> Submit Ticket
+                </a></li>
+                <li><a href="#" data-section="my-tickets">
+                    <i class="fas fa-ticket-alt"></i> My Tickets
+                </a></li>
+                <li><a href="#" data-section="faqs">
+                    <i class="fas fa-question-circle"></i> FAQs
+                </a></li>
+                <li><a href="#" data-section="contact-us">
+                    <i class="fas fa-envelope"></i> Contact Us
+                </a></li>
             </ul>
         </nav>
         <div class="tagline">
-            Submit and track your support requests easily.
+            <i class="fas fa-rocket"></i>
+            Submit and track your support requests with ease
         </div>
     </header>
 
@@ -812,18 +1645,22 @@
                 <p>Welcome to our web-based support system. Submit a ticket or view the dashboard below.</p>
                 <div class="summary-cards">
                     <div class="card">
+                        <i class="fas fa-ticket-alt card-icon"></i>
                         <h3>Total Tickets Submitted</h3>
                         <p id="total-tickets">0</p>
                     </div>
                     <div class="card">
+                        <i class="fas fa-clock card-icon"></i>
                         <h3>Pending Tickets</h3>
                         <p id="pending-tickets">0</p>
                     </div>
                     <div class="card">
+                        <i class="fas fa-cog card-icon"></i>
                         <h3>In Progress</h3>
                         <p id="in-progress-tickets">0</p>
                     </div>
                     <div class="card">
+                        <i class="fas fa-check-circle card-icon"></i>
                         <h3>Resolved Tickets</h3>
                         <p id="resolved-tickets">0</p>
                     </div>
@@ -835,30 +1672,59 @@
             <div class="container">
                 <h2>Submit a New Ticket</h2>
                 <form id="ticket-form">
-                    <label for="customer-name">Your Name</label>
-                    <input type="text" id="customer-name" name="customer-name" required>
+                    <div class="form-group">
+                        <label for="customer-name">
+                            <i class="fas fa-user"></i>
+                            Your Name
+                        </label>
+                        <input type="text" id="customer-name" name="customer-name" placeholder="Enter your full name" required>
+                    </div>
 
-                    <label for="subject">Subject</label>
-                    <input type="text" id="subject" name="subject" required>
+                    <div class="form-group">
+                        <label for="subject">
+                            <i class="fas fa-tag"></i>
+                            Subject
+                        </label>
+                        <input type="text" id="subject" name="subject" placeholder="Brief description of your issue" required>
+                    </div>
 
-                    <label for="category">Category</label>
+                    <div class="form-group">
+                        <label for="category">
+                            <i class="fas fa-folder"></i>
+                            Category
+                        </label>
                     <select id="category" name="category" required>
+                            <option value="">Select a category</option>
                         <option value="General">General</option>
                         <option value="Technical">Technical</option>
                         <option value="Billing">Billing</option>
                         <option value="Other">Other</option>
                     </select>
+                    </div>
 
-                    <label for="description">Description</label>
-                    <textarea id="description" name="description" rows="5" required></textarea>
+                    <div class="form-group">
+                        <label for="description">
+                            <i class="fas fa-align-left"></i>
+                            Description
+                        </label>
+                        <textarea id="description" name="description" rows="5" placeholder="Please provide detailed information about your issue..." required></textarea>
+                    </div>
 
-                    <label for="attachment">Attachment (optional)</label>
-                    <input type="file" id="attachment-file" name="attachment" accept="image/png, image/jpeg, image/gif">
-                    <p style="font-size: 0.8em; color: var(--muted-text-color);">
-                    
-                    </p>
+                    <div class="form-group">
+                        <label for="attachment">
+                            <i class="fas fa-paperclip"></i>
+                            Attachment (optional)
+                        </label>
+                        <input type="file" id="attachment-file" name="attachment" accept="image/png, image/jpeg, image/gif, .pdf, .doc, .docx">
+                        <p style="font-size: 0.85rem; color: var(--muted-text-color); margin-top: var(--space-2);">
+                            Supported formats: Images (PNG, JPEG, GIF), PDF, Word documents
+                        </p>
+                    </div>
 
-                    <button type="submit">Submit Ticket</button>
+                    <button type="submit">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Ticket
+                    </button>
                 </form>
             </div>
         </section>
@@ -866,14 +1732,20 @@
         <section id="my-tickets">
             <div class="container">
                 <h2>My Tickets</h2>
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
                 <input type="text" id="my-tickets-search" class="ticket-search-bar" placeholder="Search by ID, Subject, or Status...">
+                </div>
                 <div id="my-tickets-list" class="ticket-list"></div>
             </div>
         </section>
 
         <section id="ticket-details">
             <div class="container">
-                <button id="back-button">← Back to My Tickets</button>
+                <button id="back-button" class="btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to My Tickets
+                </button>
                 <div id="ticket-detail-view" class="ticket-detail-card"></div>
             </div>
         </section>
@@ -914,21 +1786,39 @@
             <div class="container">
                 <h2>Contact Us</h2>
                 <div class="contact-info">
-                    <p>For general inquiries not related to an existing ticket, please use the contact information below:</p>
-                    <p><strong>Email:</strong> <a href="mailto:princealexdigital@gmail.com">princealexdigital@gmail.com</a></p>
-                    <p><strong>Phone:</strong> <a href="tel:+254717384875">0717384875</a></p>
-                    <p><strong>Website:</strong> <a href="http://www.princealex.pro" target="_blank">www.princealex.pro</a></p>
+                    <p><i class="fas fa-info-circle"></i> For general inquiries not related to an existing ticket, please use the contact information below:</p>
+                    <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:princealexdigital@gmail.com">princealexdigital@gmail.com</a></p>
+                    <p><i class="fas fa-phone"></i> <strong>Phone:</strong> <a href="tel:+254717384875">0717384875</a></p>
+                    <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="http://www.princealex.pro" target="_blank">www.princealex.pro</a></p>
                 </div>
 
                 <h3>Send us a message:</h3>
                 <form id="contact-inquiry-form">
-                    <label for="inquiry-name">Your Name</label>
-                    <input type="text" id="inquiry-name" required>
-                    <label for="inquiry-email">Your Email</label>
-                    <input type="email" id="inquiry-email" required>
-                    <label for="inquiry-message">Your Message</label>
-                    <textarea id="inquiry-message" rows="5" required></textarea>
-                    <button type="submit">Send Message</button>
+                    <div class="form-group">
+                        <label for="inquiry-name">
+                            <i class="fas fa-user"></i>
+                            Your Name
+                        </label>
+                        <input type="text" id="inquiry-name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inquiry-email">
+                            <i class="fas fa-envelope"></i>
+                            Your Email
+                        </label>
+                        <input type="email" id="inquiry-email" placeholder="Enter your email address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inquiry-message">
+                            <i class="fas fa-comment"></i>
+                            Your Message
+                        </label>
+                        <textarea id="inquiry-message" rows="5" placeholder="Tell us how we can help you..." required></textarea>
+                    </div>
+                    <button type="submit">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
                 </form>
             </div>
         </section>
@@ -1067,23 +1957,84 @@
 
             // --- Dashboard ---
 
+            // Animate number counting for dashboard cards
+            const animateNumber = (element, targetNumber, duration = 1000) => {
+                const startNumber = parseInt(element.textContent) || 0;
+                const increment = (targetNumber - startNumber) / (duration / 16);
+                let currentNumber = startNumber;
+
+                const timer = setInterval(() => {
+                    currentNumber += increment;
+                    if ((increment > 0 && currentNumber >= targetNumber) || 
+                        (increment < 0 && currentNumber <= targetNumber)) {
+                        currentNumber = targetNumber;
+                        clearInterval(timer);
+                    }
+                    element.textContent = Math.floor(currentNumber);
+                }, 16);
+            };
+
             const updateDashboard = () => {
-                currentTickets = getTickets();
-                // Filter tickets by the last known customer name for personalized counts
-                const customerTickets = currentTickets.filter(t => 
-                    (t.customerName && t.customerName.toLowerCase() === lastCustomerName.toLowerCase())
-                );
+                // Show skeleton loading first
+                showDashboardSkeleton();
+                
+                // Simulate loading delay for better UX
+                setTimeout(() => {
+                    currentTickets = getTickets();
+                    // Filter tickets by the last known customer name for personalized counts
+                    const customerTickets = currentTickets.filter(t => 
+                        (t.customerName && t.customerName.toLowerCase() === lastCustomerName.toLowerCase())
+                    );
 
-                const pending = customerTickets.filter(t => t.status === 'Pending').length;
-                const inProgress = customerTickets.filter(t => t.status === 'In Progress').length;
-                const resolved = customerTickets.filter(t => t.status === 'Resolved').length;
+                    const pending = customerTickets.filter(t => t.status === 'Pending').length;
+                    const inProgress = customerTickets.filter(t => t.status === 'In Progress').length;
+                    const resolved = customerTickets.filter(t => t.status === 'Resolved').length;
 
-                document.getElementById('total-tickets').textContent = customerTickets.length;
-                document.getElementById('pending-tickets').textContent = pending;
-                document.getElementById('in-progress-tickets').textContent = inProgress;
-                document.getElementById('resolved-tickets').textContent = resolved;
+                    // Restore original card structure
+                    const cardsContainer = document.querySelector('.summary-cards');
+                    cardsContainer.innerHTML = `
+                        <div class="card">
+                            <i class="fas fa-ticket-alt card-icon"></i>
+                            <h3>Total Tickets Submitted</h3>
+                            <p id="total-tickets">0</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-clock card-icon"></i>
+                            <h3>Pending Tickets</h3>
+                            <p id="pending-tickets">0</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-cog card-icon"></i>
+                            <h3>In Progress</h3>
+                            <p id="in-progress-tickets">0</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-check-circle card-icon"></i>
+                            <h3>Resolved Tickets</h3>
+                            <p id="resolved-tickets">0</p>
+                        </div>
+                    `;
 
-                document.getElementById('welcome-message').textContent = `Welcome, ${lastCustomerName} - Support Ticketing System`;
+                    // Animate the numbers with counting effect
+                    animateNumber(document.getElementById('total-tickets'), customerTickets.length);
+                    animateNumber(document.getElementById('pending-tickets'), pending);
+                    animateNumber(document.getElementById('in-progress-tickets'), inProgress);
+                    animateNumber(document.getElementById('resolved-tickets'), resolved);
+
+                    document.getElementById('welcome-message').textContent = `Welcome, ${lastCustomerName} - Support Ticketing System`;
+                    
+                    // Add pulse animation to cards when data updates
+                    const cards = document.querySelectorAll('.summary-cards .card');
+                    cards.forEach(card => {
+                        card.style.animation = 'none';
+                        setTimeout(() => {
+                            card.style.animation = 'pulse 0.6s ease-in-out';
+                        }, 100);
+                    });
+                    
+                    // Re-initialize card interactions for new cards
+                    addCardInteractions();
+                }, 500);
             };
 
             // --- Submit Ticket ---
@@ -1128,10 +2079,43 @@
 
             // --- My Tickets (Customer) ---
 
-            const renderMyTickets = () => {
-                showSpinner(); // Show spinner before rendering
-                currentTickets = getTickets();
+            // Show skeleton loading for dashboard cards
+            const showDashboardSkeleton = () => {
+                const cardsContainer = document.querySelector('.summary-cards');
+                if (cardsContainer) {
+                    cardsContainer.innerHTML = '';
+                    for (let i = 0; i < 4; i++) {
+                        const skeletonCard = document.createElement('div');
+                        skeletonCard.className = 'skeleton-card';
+                        skeletonCard.innerHTML = `
+                            <div class="skeleton skeleton-icon"></div>
+                            <div class="skeleton skeleton-title"></div>
+                            <div class="skeleton skeleton-number"></div>
+                        `;
+                        cardsContainer.appendChild(skeletonCard);
+                    }
+                }
+            };
+
+            // Show skeleton loading for ticket list
+            const showTicketSkeleton = () => {
                 myTicketsList.innerHTML = '';
+                for (let i = 0; i < 3; i++) {
+                    const skeletonTicket = document.createElement('div');
+                    skeletonTicket.className = 'skeleton-ticket';
+                    skeletonTicket.innerHTML = `
+                        <div class="skeleton skeleton-line long"></div>
+                        <div class="skeleton skeleton-line medium"></div>
+                        <div class="skeleton skeleton-line short"></div>
+                        <div class="skeleton skeleton-line medium"></div>
+                    `;
+                    myTicketsList.appendChild(skeletonTicket);
+                }
+            };
+
+            const renderMyTickets = () => {
+                showTicketSkeleton(); // Show skeleton loading
+                currentTickets = getTickets();
                 const searchTerm = myTicketsSearch.value.toLowerCase();
 
                 const filteredTickets = currentTickets.filter(ticket => 
@@ -1141,25 +2125,72 @@
                     ticket.status.toLowerCase().includes(searchTerm))
                 ).sort((a,b) => b.id.localeCompare(a.id)); // Sort by ID descending
 
-                if (filteredTickets.length === 0) {
-                    myTicketsList.innerHTML = '<p>No tickets found matching your criteria. Please submit one!</p>';
-                    hideSpinner();
-                    return;
-                }
+                // Simulate loading delay for better UX
+                setTimeout(() => {
+                    if (filteredTickets.length === 0) {
+                        myTicketsList.innerHTML = '<p>No tickets found matching your criteria. Please submit one!</p>';
+                        return;
+                    }
 
                 filteredTickets.forEach(ticket => {
                     const ticketItem = document.createElement('div');
                     ticketItem.className = 'ticket-item';
+                    ticketItem.setAttribute('data-ticket-id', ticket.id);
+                    ticketItem.setAttribute('tabindex', '0');
+                    ticketItem.setAttribute('role', 'button');
+                    ticketItem.setAttribute('aria-label', `View details for ticket ${ticket.id}`);
+                    
+                    // Get status icon based on status
+                    const getStatusIcon = (status) => {
+                        switch(status.toLowerCase()) {
+                            case 'pending': return 'fas fa-clock';
+                            case 'in progress': return 'fas fa-cog fa-spin';
+                            case 'resolved': return 'fas fa-check-circle';
+                            default: return 'fas fa-info-circle';
+                        }
+                    };
+
                     ticketItem.innerHTML = `
-                        <h4>${ticket.id}: ${ticket.subject}</h4>
-                        <p>Category: ${ticket.category}</p>
-                        <p>Status: <span class="status-badge ${ticket.status.toLowerCase().replace(' ', '-')}">${ticket.status}</span></p>
-                        <p>Created Date: ${ticket.date}</p>
+                        <div class="ticket-header">
+                            <h4><i class="fas fa-ticket-alt"></i>${ticket.id}: ${ticket.subject}</h4>
+                            <div class="ticket-actions">
+                                <button class="action-btn view-btn" aria-label="View ticket details">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="ticket-details">
+                            <p><i class="fas fa-folder"></i>Category: ${ticket.category}</p>
+                            <p><i class="${getStatusIcon(ticket.status)}"></i>Status: <span class="status-badge ${ticket.status.toLowerCase().replace(' ', '-')}">${ticket.status}</span></p>
+                            <p><i class="fas fa-calendar"></i>Created Date: ${ticket.date}</p>
+                            ${ticket.attachment && ticket.attachment !== 'No attachment' ? `<p><i class="fas fa-paperclip"></i>Attachment: ${ticket.attachment}</p>` : ''}
+                        </div>
                     `;
+                    
+                    // Add click event
                     ticketItem.addEventListener('click', () => renderTicketDetails(ticket.id));
+                    
+                    // Add keyboard support
+                    ticketItem.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            renderTicketDetails(ticket.id);
+                        }
+                    });
+                    
+                    // Add hover effect for action button
+                    const viewBtn = ticketItem.querySelector('.view-btn');
+                    viewBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        renderTicketDetails(ticket.id);
+                    });
+                    
                     myTicketsList.appendChild(ticketItem);
                 });
-                hideSpinner(); // Hide spinner after rendering
+                
+                // Re-initialize card interactions for new ticket items
+                addCardInteractions();
+                }, 300);
             };
 
             // --- Ticket Details (Customer View Only) ---
@@ -1176,15 +2207,18 @@
                 }
 
                 ticketDetailView.innerHTML = `
-                    <button id="detail-back-button" onclick="showSection('my-tickets')">← Back to My Tickets</button>
+                    <button id="detail-back-button" onclick="showSection('my-tickets')" class="btn-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to My Tickets
+                    </button>
                     <h2>Ticket Details - ${ticket.id}</h2>
                     <div class="ticket-info">
-                        <p><strong>Customer Name:</strong> ${ticket.customerName || 'N/A'}</p>
-                        <p><strong>Subject:</strong> ${ticket.subject}</p>
-                        <p><strong>Category:</strong> ${ticket.category}</p>
-                        <p><strong>Status:</strong> <span class="status-badge ${ticket.status.toLowerCase().replace(' ', '-')}">${ticket.status}</span></p>
-                        <p><strong>Created Date:</strong> ${ticket.date}</p>
-                        <p><strong>Attachment:</strong> ${ticket.attachment || 'None'}</p>
+                        <p><i class="fas fa-user"></i><strong>Customer Name:</strong> ${ticket.customerName || 'N/A'}</p>
+                        <p><i class="fas fa-tag"></i><strong>Subject:</strong> ${ticket.subject}</p>
+                        <p><i class="fas fa-folder"></i><strong>Category:</strong> ${ticket.category}</p>
+                        <p><i class="fas fa-info-circle"></i><strong>Status:</strong> <span class="status-badge ${ticket.status.toLowerCase().replace(' ', '-')}">${ticket.status}</span></p>
+                        <p><i class="fas fa-calendar"></i><strong>Created Date:</strong> ${ticket.date}</p>
+                        <p><i class="fas fa-paperclip"></i><strong>Attachment:</strong> ${ticket.attachment || 'None'}</p>
                     </div>
                     
                     <div class="updates">
@@ -1205,9 +2239,17 @@
                     <div class="add-updates">
                         <h3>Add a Reply</h3>
                         <form id="update-form">
-                            <label for="update-text">Your Message</label>
-                            <textarea id="update-text" rows="3" required></textarea>
-                            <button type="submit">Send Reply</button>
+                            <div class="form-group">
+                                <label for="update-text">
+                                    <i class="fas fa-comment"></i>
+                                    Your Message
+                                </label>
+                                <textarea id="update-text" rows="3" placeholder="Type your reply here..." required></textarea>
+                            </div>
+                            <button type="submit">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Reply
+                            </button>
                         </form>
                     </div>
                 `;
@@ -1263,7 +2305,8 @@
                 document.body.classList.remove('light-mode', 'dark-mode');
                 document.body.classList.add(theme);
                 localStorage.setItem('theme', theme);
-                themeToggle.textContent = theme === 'dark-mode' ? '☀️' : '🌙';
+                const icon = themeToggle.querySelector('i');
+                icon.className = theme === 'dark-mode' ? 'fas fa-sun' : 'fas fa-moon';
             };
 
             themeToggle.addEventListener('click', () => {
@@ -1293,12 +2336,117 @@
                 navMenu.classList.toggle('active');
             });
 
+            // Add enhanced card interactions
+            const addCardInteractions = () => {
+                // Add click animation to dashboard cards
+                const dashboardCards = document.querySelectorAll('.summary-cards .card');
+                dashboardCards.forEach(card => {
+                    card.addEventListener('click', () => {
+                        card.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            card.style.transform = '';
+                        }, 150);
+                    });
+                });
+
+                // Add ripple effect to cards
+                const addRippleEffect = (element) => {
+                    element.addEventListener('click', (e) => {
+                        const ripple = document.createElement('span');
+                        const rect = element.getBoundingClientRect();
+                        const size = Math.max(rect.width, rect.height);
+                        const x = e.clientX - rect.left - size / 2;
+                        const y = e.clientY - rect.top - size / 2;
+                        
+                        ripple.style.width = ripple.style.height = size + 'px';
+                        ripple.style.left = x + 'px';
+                        ripple.style.top = y + 'px';
+                        ripple.classList.add('ripple');
+                        
+                        element.appendChild(ripple);
+                        
+                        setTimeout(() => {
+                            ripple.remove();
+                        }, 600);
+                    });
+                };
+
+                // Add ripple to all interactive cards
+                document.querySelectorAll('.card, .ticket-item').forEach(addRippleEffect);
+            };
+
             // Initial load
             showSection('home');
             // Set default customer name if not already saved
             // This ensures "Prince Alex" is the default when the page first loads
             // and persists across sessions if not changed by the user.
             document.getElementById('customer-name').value = lastCustomerName;
+            
+            // Initialize card interactions
+            addCardInteractions();
+
+            // Add keyboard navigation support
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    // Close mobile menu if open
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                    }
+                    // Close success message if visible
+                    if (successMessageOverlay.classList.contains('visible')) {
+                        successMessageOverlay.classList.remove('visible');
+                    }
+                }
+            });
+
+            // Add smooth scrolling for better UX
+            document.documentElement.style.scrollBehavior = 'smooth';
+
+            // Add loading states for better UX
+            const addLoadingState = (element) => {
+                element.style.opacity = '0.6';
+                element.style.pointerEvents = 'none';
+            };
+
+            const removeLoadingState = (element) => {
+                element.style.opacity = '1';
+                element.style.pointerEvents = 'auto';
+            };
+
+            // Enhanced form validation
+            const validateForm = (form) => {
+                const inputs = form.querySelectorAll('input[required], textarea[required], select[required]');
+                let isValid = true;
+                
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        input.style.borderColor = 'var(--error-500)';
+                        isValid = false;
+                    } else {
+                        input.style.borderColor = 'var(--border-color)';
+                    }
+                });
+                
+                return isValid;
+            };
+
+            // Add form validation to ticket form
+            ticketForm.addEventListener('submit', (e) => {
+                if (!validateForm(ticketForm)) {
+                    e.preventDefault();
+                    showSuccessMessage('Validation Error', 'Please fill in all required fields.');
+                    return;
+                }
+            });
+
+            // Add form validation to contact form
+            contactInquiryForm.addEventListener('submit', (e) => {
+                if (!validateForm(contactInquiryForm)) {
+                    e.preventDefault();
+                    showSuccessMessage('Validation Error', 'Please fill in all required fields.');
+                    return;
+                }
+            });
         });
     </script>
 </body>
